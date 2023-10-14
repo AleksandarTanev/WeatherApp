@@ -38,5 +38,10 @@ namespace Weather
             public string time;
             public string temperature_2m_max;
         }
+
+        public override string ToString()
+        {
+            return $"Lang: {latitude}, Long: {longitude}";
+        }
     }
 }
