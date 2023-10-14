@@ -14,7 +14,8 @@ public class WeatherWidget : MonoBehaviour
 
     private void Start()
     {
-        _elapseTime = 0;
+        _elapseTime = _refreshTime;
+        WeatherManager.Init();
     }
 
     public void OnClick()

@@ -30,6 +30,11 @@ namespace Weather
 
         public static void Init()
         {
+            if (_isInit)
+            {
+                return;
+            }
+
             _webComService = new WebComService();
             _locationService = new LocationService();
             _notificationService = new NotificationService();
@@ -39,24 +44,16 @@ namespace Weather
             _isInit = true;
         }
 
-        public static void TryInit()
-        {
-            if (!_isInit)
-            {
-                Init();
-            }
-        }
-
         public static LocationData GetLocation()
         {
-            TryInit();
+            Init();
 
             return _locationService.GetLocation();
         }
 
         public static void GetWeatherData(Action<WeatherData> callback)
         {
-            TryInit();
+            Init();
 
             var locationData = GetLocation();
 
@@ -65,7 +62,7 @@ namespace Weather
 
         public static void NotifyUser()
         {
-            TryInit();
+            Init();
 
             GetWeatherData((weatherData) =>
             {
@@ -81,6 +78,7 @@ namespace Weather
         private static WeatherMono CreateWeatherMono()
         {
             var newGO = new GameObject();
+            newGO.name = "WeatherMono";
             var newWeatherMono = newGO.AddComponent<WeatherMono>();
 
             return newWeatherMono;
