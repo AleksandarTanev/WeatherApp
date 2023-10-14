@@ -37,7 +37,7 @@ namespace Weather
 
             _webComService = new WebComService();
             _locationService = new LocationService();
-            _notificationService = new NotificationService();
+            _notificationService = GetDefaultNotificationService();
 
             _locationService.Start();
 
@@ -73,6 +73,17 @@ namespace Weather
         public static void DeInit()
         {
             _locationService.Stop();
+        }
+
+        private static INotificationService GetDefaultNotificationService()
+        {
+#if UNITY_EDITOR
+    return new UnityNotificationService();
+#elif UNITY_ANDROID
+    return new AndroidNotificationService();
+#else
+    return new UnityNotificationService();
+#endif
         }
 
         private static WeatherMono CreateWeatherMono()

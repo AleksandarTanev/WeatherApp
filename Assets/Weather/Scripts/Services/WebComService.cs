@@ -39,7 +39,7 @@ namespace Weather
                     case UnityWebRequest.Result.Success:
                         string json = www.downloadHandler.text;
 
-                        Debug.Log("Received: " + json);
+                        //Debug.Log("Received: " + json);
                         WeatherData data = JsonUtility.FromJson<WeatherData>(json);
 
                         callback?.Invoke(data);

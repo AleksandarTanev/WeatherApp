@@ -4,10 +4,11 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-public class WeatherUnityToast : MonoBehaviour
+public class UnityToast : MonoBehaviour
 {
     [SerializeField] private float _duration;
     [SerializeField] private float _fadeDuration;
+
     [Space]
     [SerializeField] private Image _image;
     [SerializeField] private TextMeshProUGUI _text;
@@ -17,14 +18,40 @@ public class WeatherUnityToast : MonoBehaviour
 
     private ToastAnimationState _animationState;
 
-    [ContextMenu("Test Show")]
-    public void Show()
-    {
-        _canvasGroup.alpha = 0;
-        _elapseTime = 0;
-        _animationState = ToastAnimationState.FadeIn;
+    private bool _isActive;
 
-        _canvasGroup.gameObject.SetActive(true);
+    [ContextMenu("Test Show")]
+    public void TestShow()
+    {
+        Show("This is just a test toast");
+    }
+
+    public void Show(string msg)
+    {
+        if (!_isActive)
+        {
+            _text.text = msg;
+            _canvasGroup.gameObject.SetActive(true);
+
+            _canvasGroup.alpha = 0;
+            _elapseTime = 0;
+            _animationState = ToastAnimationState.FadeIn;
+
+            _isActive = true;
+        }
+        else
+        {
+            _text.text = msg;
+
+            if (_animationState == ToastAnimationState.FadeIn || _animationState == ToastAnimationState.Shown)
+            {
+                _elapseTime = 0;
+            }
+            else if (_animationState == ToastAnimationState.FadeOut)
+            {
+                _animationState = ToastAnimationState.FadeIn;
+            }
+        }
     }
 
     private void Update()

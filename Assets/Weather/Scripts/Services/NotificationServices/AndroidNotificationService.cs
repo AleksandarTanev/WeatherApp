@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace Weather
 {
-    public class NotificationService : INotificationService
+    public class AndroidNotificationService : INotificationService
     {
         public void NotifyUser(string msg)
         {
