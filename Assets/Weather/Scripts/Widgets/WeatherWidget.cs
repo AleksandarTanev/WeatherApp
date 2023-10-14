@@ -36,6 +36,6 @@ public class WeatherWidget : MonoBehaviour
 
     private void OnWeatherDataReceived(WeatherData wd)
     {
-        _text.text = wd.daily.temperature_2m_max[0] + wd.daily_units.temperature_2m_max;
+        _text.text = wd.current.temperature_2m + wd.current_units.temperature_2m;
     }
 }

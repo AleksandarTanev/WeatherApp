@@ -10,17 +10,16 @@ namespace Weather
     {
         public void GetWeather(LocationData locationData, Action<WeatherData> callback)
         {
-            WeatherManager.WeatherMono.StartCoroutine(CheckWeather(locationData, callback));
+            WeatherManager.WeatherMono.StartCoroutine(CheckCurrentWeather(locationData, callback));
         }
 
-        public IEnumerator CheckWeather(LocationData locationData, Action<WeatherData> callback)
+        public IEnumerator CheckCurrentWeather(LocationData locationData, Action<WeatherData> callback)
         {
             string url = "https://api.open-meteo.com/v1/forecast";
             Dictionary<string, string> getParams = new Dictionary<string, string>();
-            getParams.Add("latitude", "19.07");
-            getParams.Add("longitude", "72.87");
-            getParams.Add("timezone", "IST");
-            getParams.Add("daily", "temperature_2m_max");
+            getParams.Add("latitude", locationData.latitude.ToString());
+            getParams.Add("longitude", locationData.longitude.ToString());
+            getParams.Add("current", "temperature_2m");
 
             url = AddParamsToUrl(url, getParams);
 
@@ -40,7 +39,7 @@ namespace Weather
                     case UnityWebRequest.Result.Success:
                         string json = www.downloadHandler.text;
 
-                        //Debug.Log("Received: " + json);
+                        Debug.Log("Received: " + json);
                         WeatherData data = JsonUtility.FromJson<WeatherData>(json);
 
                         callback?.Invoke(data);

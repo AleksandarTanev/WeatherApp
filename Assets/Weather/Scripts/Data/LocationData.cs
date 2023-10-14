@@ -6,5 +6,5 @@ public struct LocationData
 {
     public float latitude;
     public float longitude;
-    public float altitude;
+    public float elevation;
 }

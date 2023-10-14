@@ -25,6 +25,9 @@ namespace Weather
         public TimelyData daily;
         public TimelyDataUnits daily_units;
 
+        public CurrentData current;
+        public CurrentDataUnits current_units;
+
         [Serializable]
         public struct TimelyData
         {
@@ -37,6 +40,22 @@ namespace Weather
         {
             public string time;
             public string temperature_2m_max;
+        }
+
+        [Serializable]
+        public struct CurrentData
+        {
+            public string time;
+            public int interval;
+            public float temperature_2m;
+        }
+
+        [Serializable]
+        public struct CurrentDataUnits
+        {
+            public string time;
+            public string interval;
+            public string temperature_2m;
         }
 
         public override string ToString()
