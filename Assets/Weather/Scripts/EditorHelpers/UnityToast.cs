@@ -91,6 +91,11 @@ public class UnityToast : MonoBehaviour
         }
     }
 
+    public bool IsDestroyed()
+    {
+        return this.IsDestroyed();
+    }
+
     private enum ToastAnimationState
     {
         FadeIn,

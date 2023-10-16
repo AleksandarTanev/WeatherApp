@@ -28,16 +28,42 @@ namespace Weather
 
         private static bool _isInit;
 
-        public static void Init()
+        public static void Init(IWebComService webComService = null, ILocationService locationService = null, INotificationService notificationService = null)
         {
             if (_isInit)
             {
                 return;
             }
 
-            _webComService = new WebComService();
-            _locationService = new LocationService();
-            _notificationService = GetDefaultNotificationService();
+            if (webComService != null)
+            {
+                _webComService = webComService;
+
+            }
+            else
+            {
+                _webComService = new WebComService();
+            }
+
+            if (locationService != null)
+            {
+                _locationService = locationService;
+
+            }
+            else
+            {
+                _locationService = new LocationService();
+            }
+
+            if (locationService != null)
+            {
+                _notificationService = notificationService;
+
+            }
+            else
+            {
+                _notificationService = GetDefaultNotificationService();
+            }
 
             _locationService.Start();
 
@@ -72,7 +98,10 @@ namespace Weather
 
         public static void DeInit()
         {
-            _locationService.Stop();
+            if (_locationService != null)
+            {
+                _locationService.Stop();
+            }
         }
 
         private static INotificationService GetDefaultNotificationService()
