@@ -296,6 +296,7 @@ GameObject:
   - component: {fileID: 611025643}
   - component: {fileID: 611025642}
   - component: {fileID: 611025644}
+  - component: {fileID: 611025645}
   m_Layer: 5
   m_Name: WeatherWidget
   m_TagString: Untagged
@@ -375,6 +376,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _text: {fileID: 2114921040}
   _refreshTime: 2
+--- !u!114 &611025645
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 611025639}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6aa335de751965a46ae34367bce723b7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _debugMode: 1
+  _label: {fileID: 2114921040}
 --- !u!1 &681412328
 GameObject:
   m_ObjectHideFlags: 0
