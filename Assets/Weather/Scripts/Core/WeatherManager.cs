@@ -24,11 +24,10 @@ namespace Weather
 
         private static IWebComService _webComService;
         private static ILocationService _locationService;
-        private static INotificationService _notificationService;
 
         private static bool _isInit;
 
-        public static void Init(IWebComService webComService = null, ILocationService locationService = null, INotificationService notificationService = null)
+        public static void Init(IWebComService webComService = null, ILocationService locationService = null)
         {
             if (_isInit)
             {
@@ -55,16 +54,6 @@ namespace Weather
                 _locationService = new LocationService();
             }
 
-            if (locationService != null)
-            {
-                _notificationService = notificationService;
-
-            }
-            else
-            {
-                _notificationService = GetDefaultNotificationService();
-            }
-
             _locationService.Start();
 
             _isInit = true;
@@ -86,33 +75,12 @@ namespace Weather
             _webComService.GetWeather(locationData, callback);
         }
 
-        public static void NotifyUser()
-        {
-            Init();
-
-            GetWeatherData((weatherData) =>
-            {
-                _notificationService.NotifyUser(weatherData.ToString());
-            });
-        }
-
         public static void DeInit()
         {
             if (_locationService != null)
             {
                 _locationService.Stop();
             }
-        }
-
-        private static INotificationService GetDefaultNotificationService()
-        {
-#if UNITY_EDITOR
-    return new UnityNotificationService();
-#elif UNITY_ANDROID
-    return new AndroidNotificationService();
-#else
-    return new UnityNotificationService();
-#endif
         }
 
         private static WeatherMono CreateWeatherMono()

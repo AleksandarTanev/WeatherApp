@@ -83,14 +83,4 @@ public class WeatherManagerTests
             isRunning = false;
         }
     }
-
-    private class MockNotificationService : INotificationService
-    {
-        public string receivedMessage;
-
-        public void NotifyUser(string msg)
-        {
-            receivedMessage = msg;
-        }
-    }
 }

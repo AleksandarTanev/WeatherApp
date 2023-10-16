@@ -18,11 +18,6 @@ public class WeatherWidget : MonoBehaviour
         WeatherManager.Init();
     }
 
-    public void OnClick()
-    {
-        WeatherManager.NotifyUser();
-    }
-
     private void Update()
     {
         _elapseTime += Time.deltaTime;
