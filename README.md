@@ -1,6 +1,7 @@
 ## Table of contents
 * [General info](#general-info)
 * [Usage](#usage)
+* [Tests](#tests)
 * [Samples](#samples)
 
 ## General info
@@ -14,6 +15,9 @@ https://github.com/AleksandarTanev/com.bubblebee.device-notifications.git
 ```
 The *WeatherManager* uses two services: *ILocationService* and *IWeatherProviderService*.
 These services can be swapped with custom made ones by implementing the corresponding interface and providing the new services to the *WeatherManager* through the *Init()* method.
+
+## Tests
+There are a few unity tests added that can be run by using the Unity Test Framework.
 
 ## Samples
 The project contains a scene (*Main*) that provides an example of the functionality.
