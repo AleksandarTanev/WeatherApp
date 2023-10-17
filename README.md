@@ -17,7 +17,7 @@ The *WeatherManager* uses two services: *ILocationService* and *IWeatherProvider
 These services can be swapped with custom made ones by implementing the corresponding interface and providing the new services to the *WeatherManager* through the *Init()* method.
 
 ## Tests
-There are a few unity tests added that can be run by using the Unity Test Framework.
+There are a few unity tests that can be run by using the Unity Test Framework.
 
 ## Samples
 The project contains a scene (*Main*) that provides an example of the functionality.
