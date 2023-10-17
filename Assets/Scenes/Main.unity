@@ -429,7 +429,7 @@ GameObject:
   - component: {fileID: 600703645}
   - component: {fileID: 600703644}
   m_Layer: 0
-  m_Name: WeatherManager
+  m_Name: WeatherAppController
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

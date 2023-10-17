@@ -66,7 +66,7 @@ namespace Weather
             return _locationService.GetLocation();
         }
 
-        public static void GetWeatherData(Action<WeatherData> callback)
+        public static void GetCurrentWeatherData(Action<WeatherData> callback)
         {
             Init();
 

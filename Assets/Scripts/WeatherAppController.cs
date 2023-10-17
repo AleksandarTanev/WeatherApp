@@ -5,28 +5,31 @@ using System.Collections.Generic;
 using UnityEngine;
 using Weather;
 
-public class WeatherAppController : MonoBehaviour
+namespace Weather
 {
-    [SerializeField] private NotificationWidget _notificationWidget;
-
-    private void Start()
+    public class WeatherAppController : MonoBehaviour
     {
-        if (_notificationWidget != null)
+        [SerializeField] private NotificationWidget _notificationWidget;
+
+        private void Start()
         {
-            _notificationWidget.SetDelayedMessageProvider(DelayedMessageProvider);
+            if (_notificationWidget != null)
+            {
+                _notificationWidget.SetDelayedMessageProvider(DelayedMessageProvider);
+            }
         }
-    }
 
-    private void DelayedMessageProvider(Action<string> callback)
-    {
-        WeatherManager.GetWeatherData((weatherData) =>
+        private void DelayedMessageProvider(Action<string> callback)
         {
-            callback.Invoke(GenerateWeatherMessage(weatherData.GetCurrentTemperature()));
-        });
-    }
+            WeatherManager.GetCurrentWeatherData((weatherData) =>
+            {
+                callback.Invoke(GenerateWeatherMessage(weatherData.GetCurrentTemperature()));
+            });
+        }
 
-    private string GenerateWeatherMessage(string temperature)
-    {
-        return $"Current temperature is {temperature}";
+        private string GenerateWeatherMessage(string temperature)
+        {
+            return $"Current temperature is {temperature}";
+        }
     }
 }

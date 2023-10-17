@@ -5,11 +5,5 @@ using Weather;
 
 public class WeatherMono : MonoBehaviour
 {
-    private void OnDestroy()
-    {
-        if (WeatherManager.WeatherMono == this)
-        {
-            // remove
-        }
-    }
+
 }
