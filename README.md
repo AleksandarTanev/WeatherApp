@@ -1,4 +1,4 @@
-# WeatherApp (Android only support)
+# WeatherApp
 
 ## Table of contents
 * [General info](#general-info)
