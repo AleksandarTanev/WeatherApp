@@ -1,5 +1,3 @@
-# WeatherApp
-
 ## Table of contents
 * [General info](#general-info)
 * [Usage](#usage)
