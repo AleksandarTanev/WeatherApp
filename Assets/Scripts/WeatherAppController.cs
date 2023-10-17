@@ -13,15 +13,20 @@ public class WeatherAppController : MonoBehaviour
     {
         if (_notificationWidget != null)
         {
-            _notificationWidget.SetDelayedMessageProvider(Asd);
+            _notificationWidget.SetDelayedMessageProvider(DelayedMessageProvider);
         }
     }
 
-    private void Asd(Action<string> callback)
+    private void DelayedMessageProvider(Action<string> callback)
     {
         WeatherManager.GetWeatherData((weatherData) =>
         {
-            callback.Invoke(weatherData.GetCurrentTemperature());
+            callback.Invoke(GenerateWeatherMessage(weatherData.GetCurrentTemperature()));
         });
+    }
+
+    private string GenerateWeatherMessage(string temperature)
+    {
+        return $"Current temperature is {temperature}";
     }
 }

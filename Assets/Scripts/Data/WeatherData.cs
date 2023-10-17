@@ -58,11 +58,6 @@ namespace Weather
             public string temperature_2m;
         }
 
-        public override string ToString()
-        {
-            return $"Lang: {latitude}, Long: {longitude}";
-        }
-
         public string GetCurrentTemperature()
         {
             return current.temperature_2m + current_units.temperature_2m;

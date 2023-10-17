@@ -40,7 +40,8 @@ namespace Weather
                         Debug.LogError("HTTP Error");
                         break;
                     case UnityWebRequest.Result.Success:
-                        Debug.Log(www.downloadHandler.text);
+                        //Debug.Log(www.downloadHandler.text);
+
                         string json = www.downloadHandler.text;
                         WeatherData data = ParseWeatherData(json);
 

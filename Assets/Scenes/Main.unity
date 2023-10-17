@@ -476,7 +476,7 @@ GameObject:
   - component: {fileID: 611025642}
   - component: {fileID: 611025644}
   m_Layer: 5
-  m_Name: WeatherWidget
+  m_Name: ClickNotificationWidgetUI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -736,5 +736,5 @@ SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 519420032}
-  - {fileID: 681412332}
   - {fileID: 600703645}
+  - {fileID: 681412332}
