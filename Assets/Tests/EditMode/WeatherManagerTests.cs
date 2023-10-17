@@ -31,37 +31,6 @@ public class WeatherManagerTests
         WeatherManager.DeInit();
     }
 
-    [Test]
-    public void Use_NotificationService_SendGivenMessage()
-    {
-        string msg = "test notification message";
-
-       /* var mockNotificationService = new MockNotificationService();
-
-        WeatherManager.DeInit();
-        WeatherManager.Init(notificationService: mockNotificationService);
-
-        WeatherManager.NotifyUser();
-
-        LocationData ld = WeatherManager.GetLocation();
-
-        Assert.AreEqual(predefinedLocationData.longitude, ld.longitude);
-        Assert.AreEqual(predefinedLocationData.latitude, ld.latitude);
-        */
-        WeatherManager.DeInit();
-    }
-
-    /*
-    // A UnityTest behaves like a coroutine in Play Mode. In Edit Mode you can use
-    // `yield return null;` to skip a frame.
-    [UnityTest]
-    public IEnumerator WeatherManagerTestsWithEnumeratorPasses()
-    {
-        // Use the Assert class to test conditions.
-        // Use yield to skip a frame.
-        yield return null;
-    }*/
-
     private class MockLocationService : ILocationService
     {
         public LocationData locationData;

@@ -3,7 +3,7 @@ using System.Collections;
 
 namespace Weather
 {
-    public interface IWebComService
+    public interface IWeatherProviderService
     {
         public void GetWeather(LocationData locationData, Action<WeatherData> weatherData);
     }

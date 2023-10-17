@@ -6,8 +6,10 @@ using UnityEngine.Networking;
 
 namespace Weather
 {
-    public class WebComService : IWebComService
+    public class WeatherProviderService : IWeatherProviderService
     {
+        private static string OPEN_WEATHER_URL = "https://api.open-meteo.com/v1/forecast";
+
         public void GetWeather(LocationData locationData, Action<WeatherData> callback)
         {
             WeatherManager.WeatherMono.StartCoroutine(CheckCurrentWeather(locationData, callback));
@@ -15,7 +17,8 @@ namespace Weather
 
         public IEnumerator CheckCurrentWeather(LocationData locationData, Action<WeatherData> callback)
         {
-            string url = "https://api.open-meteo.com/v1/forecast";
+            string url = OPEN_WEATHER_URL;
+
             Dictionary<string, string> getParams = new Dictionary<string, string>();
             getParams.Add("latitude", locationData.latitude.ToString());
             getParams.Add("longitude", locationData.longitude.ToString());
@@ -37,10 +40,9 @@ namespace Weather
                         Debug.LogError("HTTP Error");
                         break;
                     case UnityWebRequest.Result.Success:
+                        Debug.Log(www.downloadHandler.text);
                         string json = www.downloadHandler.text;
-
-                        //Debug.Log("Received: " + json);
-                        WeatherData data = JsonUtility.FromJson<WeatherData>(json);
+                        WeatherData data = ParseWeatherData(json);
 
                         callback?.Invoke(data);
 
@@ -70,6 +72,11 @@ namespace Weather
             }
 
             return url;
+        }
+
+        public WeatherData ParseWeatherData(string json)
+        {
+            return JsonUtility.FromJson<WeatherData>(json);
         }
     }
 }

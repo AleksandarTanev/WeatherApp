@@ -22,12 +22,12 @@ namespace Weather
 
         private static WeatherMono _weatherMono;
 
-        private static IWebComService _webComService;
+        private static IWeatherProviderService _webComService;
         private static ILocationService _locationService;
 
         private static bool _isInit;
 
-        public static void Init(IWebComService webComService = null, ILocationService locationService = null)
+        public static void Init(IWeatherProviderService webComService = null, ILocationService locationService = null)
         {
             if (_isInit)
             {
@@ -41,7 +41,7 @@ namespace Weather
             }
             else
             {
-                _webComService = new WebComService();
+                _webComService = new WeatherProviderService();
             }
 
             if (locationService != null)
